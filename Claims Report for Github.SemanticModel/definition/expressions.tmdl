@@ -1,0 +1,26 @@
+expression 'Claim Defination' =
+		let
+		    Source = Excel.Workbook(File.Contents("C:\Michael\unemployment-insurance-claims-data.xlsx"), null, true),
+		    Table1_Table = Source{[Item="Table1",Kind="Table"]}[Data],
+		    #"Changed Type" = Table.TransformColumnTypes(Table1_Table,{{"Term", type text}, {"Definition", type text}})
+		in
+		    #"Changed Type"
+	lineageTag: b09e3dda-c725-456c-99e0-25d59fa76570
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression Definitions =
+		let
+		    Source = Excel.Workbook(File.Contents("C:\Michael\unemployment-insurance-claims-data.xlsx"), null, true),
+		    Definitions_Sheet = Source{[Item="Definitions",Kind="Sheet"]}[Data],
+		    #"Changed Type" = Table.TransformColumnTypes(Definitions_Sheet,{{"Column1", type text}, {"Column2", type text}})
+		in
+		    #"Changed Type"
+	lineageTag: 512733df-00a5-4c27-a67c-7bc1818b4090
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

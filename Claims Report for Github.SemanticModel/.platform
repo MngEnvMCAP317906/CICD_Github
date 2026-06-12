@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Claims Report for Github"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "173db011-1848-4446-bc51-506673a7b648"
+  }
+}

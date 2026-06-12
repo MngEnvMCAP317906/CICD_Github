@@ -1,0 +1,58 @@
+table CountyClaims
+	lineageTag: 13f3ef5d-fb63-4d04-a042-f3640e2a1e24
+
+	column 'Week Ending'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 44b1cb31-5828-4845-bd04-1ad3b25739ec
+		summarizeBy: none
+		sourceColumn: Week Ending
+
+		variation Variation
+			isDefault
+			relationship: 7b0aba4c-21bf-4b40-951a-657dae1994dc
+			defaultHierarchy: LocalDateTable_fab0488f-dbbf-414b-9a12-45f2732efd42.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column County
+		dataType: string
+		lineageTag: 13b85b71-dc97-4599-b07a-66849b3a9407
+		summarizeBy: none
+		sourceColumn: County
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Initial UI Claims'
+		dataType: int64
+		formatString: 0
+		lineageTag: 3b15e65a-e5b1-4584-aaf0-4d87be08cd79
+		summarizeBy: sum
+		sourceColumn: Initial UI Claims
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Claim Type'
+		dataType: string
+		lineageTag: f874edeb-4498-46c2-8b63-d95d824dd90e
+		summarizeBy: none
+		sourceColumn: Claim Type
+
+		annotation SummarizationSetBy = Automatic
+
+	partition CountyClaims = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Michael\ada-county-and-statewide-demographics--industry-data-7-26-25.xlsx"), null, true),
+				    CountyClaims_Table = Source{[Item="CountyClaims",Kind="Table"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(CountyClaims_Table,{{"Week Ending", type date}, {"County", type text}, {"Initial UI Claims", Int64.Type}, {"Claim Type", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

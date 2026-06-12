@@ -1,0 +1,75 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "6da67a87cb4bde1ffeca",
+  "displayName": "Claims Filed",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280,
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "7dafb7c3ffc054faf81a",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Claims Filed"
+              }
+            },
+            "Property": "Claims Filed"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      }
+    ]
+  },
+  "pageBinding": {
+    "name": "9082b201e9172cf4d689",
+    "type": "Drillthrough",
+    "parameters": [
+      {
+        "name": "18b8a0110fd90d4412aa",
+        "boundFilter": "7dafb7c3ffc054faf81a",
+        "asAggregation": true,
+        "fieldExpr": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Claims Filed"
+              }
+            },
+            "Property": "Claims Filed"
+          }
+        }
+      }
+    ],
+    "referenceScope": "CrossReport"
+  },
+  "objects": {
+    "background": [
+      {
+        "properties": {
+          "color": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#EDFAC8'"
+                  }
+                }
+              }
+            }
+          },
+          "transparency": {
+            "expr": {
+              "Literal": {
+                "Value": "20D"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

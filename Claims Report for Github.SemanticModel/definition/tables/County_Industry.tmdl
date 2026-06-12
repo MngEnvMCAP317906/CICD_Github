@@ -1,0 +1,71 @@
+table County_Industry
+	lineageTag: 8bf3d526-13a3-4e44-93c7-88f54195b093
+
+	column 'Week Ending'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 01200ce7-46db-401e-bf4a-61dd55cdf988
+		summarizeBy: none
+		sourceColumn: Week Ending
+
+		variation Variation
+			isDefault
+			relationship: c62766ea-3739-421e-bd62-74cdf2d5a6f8
+			defaultHierarchy: LocalDateTable_47a3f670-7a59-4182-bbb1-306e88c936ae.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column County
+		dataType: string
+		lineageTag: 124e503f-b1c5-4926-980b-9461d27dc6c8
+		summarizeBy: none
+		sourceColumn: County
+
+		annotation SummarizationSetBy = Automatic
+
+	column NAICS
+		dataType: int64
+		formatString: 0
+		lineageTag: 0bfbdf18-1e39-4604-b7e4-d8a1642996cf
+		summarizeBy: sum
+		sourceColumn: NAICS
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Industry Sector'
+		dataType: string
+		lineageTag: f767da71-3696-4d75-8af8-1c2991faff4f
+		summarizeBy: none
+		sourceColumn: Industry Sector
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Initial UI Claims'
+		dataType: int64
+		formatString: #,0
+		lineageTag: 16cc7d3c-34c0-4bc7-92ff-f58a7a63806e
+		summarizeBy: sum
+		sourceColumn: Initial UI Claims
+
+		annotation SummarizationSetBy = Automatic
+
+	partition County_Industry = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Michael\ada-county-and-statewide-demographics--industry-data-7-26-25.xlsx"), null, true),
+				    County_Industry_Sheet = Source{[Item="County_Industry",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(County_Industry_Sheet, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"California Unemployment Industry & Demographics Data Dashboard - County Industry", type any}, {"Column2", type text}, {"Column3", type any}, {"Column4", type text}, {"Column5", type any}}),
+				    #"Removed Top Rows" = Table.Skip(#"Changed Type",2),
+				    #"Promoted Headers1" = Table.PromoteHeaders(#"Removed Top Rows", [PromoteAllScalars=true]),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Promoted Headers1",{{"Week Ending", type date}, {"County", type text}, {"NAICS", Int64.Type}, {"Industry Sector", type text}, {"Initial UI Claims", Int64.Type}})
+				in
+				    #"Changed Type1"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

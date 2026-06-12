@@ -1,0 +1,37 @@
+relationship 7b0aba4c-21bf-4b40-951a-657dae1994dc
+	joinOnDateBehavior: datePartOnly
+	fromColumn: CountyClaims.'Week Ending'
+	toColumn: LocalDateTable_fab0488f-dbbf-414b-9a12-45f2732efd42.Date
+
+relationship ecacfddb-96ee-491b-b384-ecc9a4e343fc
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Benefits Paid'.'Week Ending Date'
+	toColumn: LocalDateTable_fc292548-6995-4a19-aa2a-577f589fa4d3.Date
+
+relationship 829dee65-b3e0-47a5-a90c-0b364a3553c9
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Claims Filed'.'Week Ending Date'
+	toColumn: LocalDateTable_f58f8d3f-17a2-456b-9a0d-73baa8be7a4c.Date
+
+relationship c62766ea-3739-421e-bd62-74cdf2d5a6f8
+	joinOnDateBehavior: datePartOnly
+	fromColumn: County_Industry.'Week Ending'
+	toColumn: LocalDateTable_47a3f670-7a59-4182-bbb1-306e88c936ae.Date
+
+relationship 5f2c65e9-6fd2-bd52-616e-6dd6f052c428
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: 'Claims Paid'.'Week Ending Date'
+	toColumn: 'Claims Filed'.'Week Ending Date'
+
+relationship c3d0449f-21f8-4398-a92e-3b33476bfb44
+	joinOnDateBehavior: datePartOnly
+	fromColumn: County_Demographics.'Week Ending'
+	toColumn: LocalDateTable_c340bee9-9392-4c44-abae-9ebb40c4896f.Date
+
+relationship b0b429a2-86f3-a363-a88e-2f1f04c78a96
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: County_Industry.County
+	toColumn: County_Demographics.County
+

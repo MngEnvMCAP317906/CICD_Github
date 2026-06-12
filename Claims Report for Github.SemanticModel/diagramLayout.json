@@ -1,0 +1,670 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 12640,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 10101.42078972431,
+            "y": 34.711174489961195
+          },
+          "nodeIndex": "2023-personal-income-tax-statistics-by-zipcode",
+          "nodeLineageTag": "0acd7b2f-a45e-4c34-ab34-0ff97e5b4a49",
+          "size": {
+            "height": 272,
+            "width": 234
+          },
+          "zIndex": 19
+        },
+        {
+          "location": {
+            "x": 18990.6710846817,
+            "y": 70.7111744899612
+          },
+          "nodeIndex": "2024_geo_zip_code_mapping",
+          "nodeLineageTag": "ed4d4a72-db81-4bb2-b666-2b4856e7999b",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 20
+        },
+        {
+          "location": {
+            "x": 14546.045937203005,
+            "y": 58.711174489961195
+          },
+          "nodeIndex": "ADP_PAY_history",
+          "nodeLineageTag": "6ab9206f-e80b-4a0b-a910-175331c7a965",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 22
+        },
+        {
+          "location": {
+            "x": 3442.858573694235,
+            "y": 1721.1397459185328
+          },
+          "nodeIndex": "Benefits Paid",
+          "nodeLineageTag": "a5036206-02f3-4436-ae4e-ff7337a1142d",
+          "size": {
+            "height": 272,
+            "width": 234
+          },
+          "zIndex": 51
+        },
+        {
+          "location": {
+            "x": 4566.7049476691718,
+            "y": 2416.7111744899612
+          },
+          "nodeIndex": "BLS-CES-SA",
+          "nodeLineageTag": "a3624ccf-03dd-4c0b-af3d-80c791468c59",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 49
+        },
+        {
+          "location": {
+            "x": 6274.7279162706727,
+            "y": 2290.7111744899612
+          },
+          "nodeIndex": "BLS-CES-SA mapping",
+          "nodeLineageTag": "aee8783e-bf15-4f5c-a7c3-43cb5a73eeb1",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 50
+        },
+        {
+          "location": {
+            "x": 1616.2273263558905,
+            "y": 20.711174489961195
+          },
+          "nodeIndex": "Claimants Pending EDD Action",
+          "nodeLineageTag": "5e2d14d7-7173-4a14-9fc1-2790ae0fed26",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 23
+        },
+        {
+          "location": {
+            "x": 2020.2841579448632,
+            "y": 20.711174489961195
+          },
+          "nodeIndex": "Claims Filed",
+          "nodeLineageTag": "16a2bf57-b896-4bc5-934d-b4e27dd8c4c0",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 43
+        },
+        {
+          "location": {
+            "x": 1886.0076562005027,
+            "y": 472.37784115662788
+          },
+          "nodeIndex": "Claims Paid",
+          "nodeLineageTag": "c5e24a5d-d7ee-4cc8-9522-e4d31674c524",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 48
+        },
+        {
+          "location": {
+            "x": 13737.932274025061,
+            "y": 46.711174489961195
+          },
+          "nodeIndex": "County_Claims",
+          "nodeLineageTag": "d12c60c1-26e9-4398-82cc-9da0f6e091cf",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 25
+        },
+        {
+          "location": {
+            "x": 14141.989105614033,
+            "y": 46.711174489961195
+          },
+          "nodeIndex": "County_Demographics",
+          "nodeLineageTag": "50c9cb98-94fd-4658-81f6-d5ed1215dd8a",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 26
+        },
+        {
+          "location": {
+            "x": 19798.784747859645,
+            "y": 70.7111744899612
+          },
+          "nodeIndex": "County_Industry",
+          "nodeLineageTag": "8bf3d526-13a3-4e44-93c7-88f54195b093",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 27
+        },
+        {
+          "location": {
+            "x": 17243.455242626562,
+            "y": 1060.2111744899612
+          },
+          "nodeIndex": "CountyClaims",
+          "nodeLineageTag": "13f3ef5d-fb63-4d04-a042-f3640e2a1e24",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 28
+        },
+        {
+          "location": {
+            "x": 20202.841579448617,
+            "y": 70.7111744899612
+          },
+          "nodeIndex": "CountyDemo",
+          "nodeLineageTag": "18292e17-10b5-436d-80c6-fe7c44b467ab",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 29
+        },
+        {
+          "location": {
+            "x": 4444.6251474786986,
+            "y": 20.711174489961195
+          },
+          "nodeIndex": "Ineligible Claims",
+          "nodeLineageTag": "72aa51bf-3a3c-4660-8331-e4a5da259388",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 32
+        },
+        {
+          "location": {
+            "x": 2480.9630243308275,
+            "y": 4260.28260306139
+          },
+          "nodeIndex": "Statewide_Demographics",
+          "nodeLineageTag": "f88a5cb5-6b0f-4472-905d-445f74d051fc",
+          "size": {
+            "height": 145,
+            "width": 234
+          },
+          "zIndex": 45
+        },
+        {
+          "location": {
+            "x": 20031.079800190473,
+            "y": 20.711174489961195
+          },
+          "nodeIndex": "By Line By Company Name",
+          "nodeLineageTag": "5cb06aa1-caf9-4d08-adee-ab35116d3eb2",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 21614.943983488178,
+            "y": 20.711174489961195
+          },
+          "nodeIndex": "Group Concentration Level",
+          "nodeLineageTag": "9b725608-2575-4fb9-a0b5-1a105fc86204",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 23098.154297678961,
+            "y": 46.711174489961195
+          },
+          "nodeIndex": "By Line By Group Name",
+          "nodeLineageTag": "356df06b-f648-4077-a902-470b6ab6305c",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 21893.759911257723,
+            "y": 20.711174489961195
+          },
+          "nodeIndex": "EDD CES",
+          "nodeLineageTag": "02f7e347-13b2-4b3e-a9dd-a807a89b13e5",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 27514.267047890156,
+            "y": 118.71117448996119
+          },
+          "nodeIndex": "EDD Intro",
+          "nodeLineageTag": "a7da7c50-dea2-40d0-aa5e-851703df2ce7",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 22295.224706731467,
+            "y": 20.711174489961195
+          },
+          "nodeIndex": "EDD QCEW",
+          "nodeLineageTag": "8fb45cbb-46a2-4b81-8e02-5c1268c3f92f",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 26800.422771548961,
+            "y": 1988.3633653057918
+          },
+          "nodeIndex": "laborforceandunemployment",
+          "nodeLineageTag": "31e85311-bb46-4d90-a667-9968cacb50eb",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 27602.422771548961,
+            "y": 2054.7857142857142
+          },
+          "nodeIndex": "PPA",
+          "nodeLineageTag": "c25f425f-f80e-46dc-b7ff-2a5ebb94bc57",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 26516.241282727453,
+            "y": 2021.2080632656368
+          },
+          "nodeIndex": "ClaimantsbyCounty",
+          "nodeLineageTag": "a5b34491-b12f-4102-b93b-c489e171a821",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 27368.422771548961,
+            "y": 2006.7857142857142
+          },
+          "nodeIndex": "DA20251423",
+          "nodeLineageTag": "c01df5c7-64fc-4e4e-8b67-acc170b73dfe",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 27084.422771548961,
+            "y": 2004.7857142857142
+          },
+          "nodeIndex": "UnemploymentRates",
+          "nodeLineageTag": "76ee424a-9e20-4992-9dbc-f602c857de0c",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 26232.039721534267,
+            "y": 2018.3484760853896
+          },
+          "nodeIndex": "ClaimantsPage",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 10,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    },
+    {
+      "ordinal": 1,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 593,
+            "y": 260
+          },
+          "nodeIndex": "ADP_PAY_history",
+          "nodeLineageTag": "6ab9206f-e80b-4a0b-a910-175331c7a965",
+          "size": {
+            "height": 382,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Layout 1",
+      "zoomValue": 70,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    },
+    {
+      "ordinal": 2,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 185,
+            "y": 536
+          },
+          "nodeIndex": "2024_geo_zip_code_mapping",
+          "nodeLineageTag": "ed4d4a72-db81-4bb2-b666-2b4856e7999b",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Layout 2",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    },
+    {
+      "ordinal": 3,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 843,
+            "y": 65
+          },
+          "nodeIndex": "By Line By Company Name",
+          "nodeLineageTag": "5cb06aa1-caf9-4d08-adee-ab35116d3eb2",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 37,
+            "y": 260
+          },
+          "nodeIndex": "Group Concentration Level",
+          "nodeLineageTag": "9b725608-2575-4fb9-a0b5-1a105fc86204",
+          "size": {
+            "height": 326,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 301,
+            "y": 84
+          },
+          "nodeIndex": "By Line By Group Name",
+          "nodeLineageTag": "c2d02ea3-0ddb-439b-8345-99ef5e220cdf",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Layout 3",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    },
+    {
+      "ordinal": 4,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 932,
+            "y": 432
+          },
+          "nodeIndex": "County_Industry",
+          "nodeLineageTag": "8bf3d526-13a3-4e44-93c7-88f54195b093",
+          "size": {
+            "height": 340,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 756,
+            "y": 0
+          },
+          "nodeIndex": "County_Demographics",
+          "nodeLineageTag": "50c9cb98-94fd-4658-81f6-d5ed1215dd8a",
+          "size": {
+            "height": 349,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 329,
+            "y": 0
+          },
+          "nodeIndex": "County_Claims",
+          "nodeLineageTag": "d12c60c1-26e9-4398-82cc-9da0f6e091cf",
+          "size": {
+            "height": 280,
+            "width": 234
+          },
+          "zIndex": 2
+        }
+      ],
+      "name": "Layout 4",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    },
+    {
+      "ordinal": 5,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 33,
+            "y": 66
+          },
+          "nodeIndex": "Claims Filed",
+          "nodeLineageTag": "16a2bf57-b896-4bc5-934d-b4e27dd8c4c0",
+          "size": {
+            "height": 562,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 395,
+            "y": 0
+          },
+          "nodeIndex": "Claims Paid",
+          "nodeLineageTag": "c5e24a5d-d7ee-4cc8-9522-e4d31674c524",
+          "size": {
+            "height": 392,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 418,
+            "y": 473
+          },
+          "nodeIndex": "Ineligible Claims",
+          "nodeLineageTag": "72aa51bf-3a3c-4660-8331-e4a5da259388",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 778,
+            "y": 36
+          },
+          "nodeIndex": "County_Demographics",
+          "nodeLineageTag": "50c9cb98-94fd-4658-81f6-d5ed1215dd8a",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Claims",
+      "zoomValue": 60,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    },
+    {
+      "ordinal": 6,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 0,
+            "y": 311
+          },
+          "nodeIndex": "County_Demographics",
+          "nodeLineageTag": "50c9cb98-94fd-4658-81f6-d5ed1215dd8a",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 874,
+            "y": 289
+          },
+          "nodeIndex": "County_Claims",
+          "nodeLineageTag": "d12c60c1-26e9-4398-82cc-9da0f6e091cf",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 473,
+            "y": 192
+          },
+          "nodeIndex": "County_Industry",
+          "nodeLineageTag": "8bf3d526-13a3-4e44-93c7-88f54195b093",
+          "size": {
+            "height": 341,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "County",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

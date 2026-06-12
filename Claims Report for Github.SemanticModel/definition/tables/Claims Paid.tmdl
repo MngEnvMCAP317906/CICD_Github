@@ -1,0 +1,139 @@
+table 'Claims Paid'
+	lineageTag: c5e24a5d-d7ee-4cc8-9522-e4d31674c524
+
+	column 'Week Ending Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: f17cb380-cb17-426a-be26-47c1456d350a
+		summarizeBy: none
+		sourceColumn: Week Ending Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column ' Claims Paid'
+		dataType: int64
+		formatString: 0
+		lineageTag: bf0626eb-906f-4d80-9396-d4439a710120
+		summarizeBy: sum
+		sourceColumn: " Claims Paid"
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Change from Previous Week Ending Date'
+		dataType: int64
+		formatString: 0
+		lineageTag: ca03b289-0b46-4c91-9a4a-5b61f6aea466
+		summarizeBy: sum
+		sourceColumn: Change from Previous Week Ending Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Percentage Change from Previous Week Ending Date'
+		dataType: double
+		lineageTag: 94db2f57-cd1e-479e-9276-7709738c7ba1
+		summarizeBy: sum
+		sourceColumn: Percentage Change from Previous Week Ending Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Paid w/in 1 Week'
+		dataType: int64
+		formatString: 0
+		lineageTag: c51681d1-d669-4e8a-ada3-536ffcd643c7
+		summarizeBy: sum
+		sourceColumn: Paid w/in 1 Week
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Paid w/in 1 Week Percentage'
+		dataType: double
+		lineageTag: 9888e8e1-2445-4a0a-98ea-47b878bf2311
+		summarizeBy: sum
+		sourceColumn: Paid w/in 1 Week Percentage
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Paid w/in 2 Weeks '
+		dataType: int64
+		formatString: 0
+		lineageTag: 9cc4c817-d285-448a-a3c4-611a24b9f03f
+		summarizeBy: sum
+		sourceColumn: "Paid w/in 2 Weeks "
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Paid w/in 2 Weeks Percentage'
+		dataType: double
+		lineageTag: d3b409e3-e4c6-4087-877e-bbd3003ab909
+		summarizeBy: sum
+		sourceColumn: Paid w/in 2 Weeks Percentage
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Paid w/in 3 Weeks'
+		dataType: int64
+		formatString: 0
+		lineageTag: 8610990b-817b-4baf-a554-1d36dbf341dc
+		summarizeBy: sum
+		sourceColumn: Paid w/in 3 Weeks
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Paid w/in 3 Weeks Percentage'
+		dataType: double
+		lineageTag: d2c3b947-f646-43a5-acb4-d876fbceafde
+		summarizeBy: sum
+		sourceColumn: Paid w/in 3 Weeks Percentage
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Paid w/in +3 Weeks'
+		dataType: int64
+		formatString: 0
+		lineageTag: 87935ea1-826e-48fd-be50-fc953bb9bb99
+		summarizeBy: sum
+		sourceColumn: Paid w/in +3 Weeks
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Paid w/in +3 Weeks Percentage'
+		dataType: double
+		lineageTag: f2c22c3f-7796-4398-983c-827eca178186
+		summarizeBy: sum
+		sourceColumn: Paid w/in +3 Weeks Percentage
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'Claims Paid' = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Michael\unemployment-insurance-claims-data.xlsx"), null, true),
+				    #"Claims Paid_Sheet" = Source{[Item="Claims Paid",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Claims Paid_Sheet", [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"CALIFORNIA UNEMPLOYMENT INSURANCE (UI) CLAIMS DATA DASHBOARD ", type any}, {"Column2", type any}, {"Column3", type any}, {"Column4", type any}, {"Column5", type any}, {"Column6", type any}, {"Column7", type any}, {"Column8", type any}, {"Column9", type any}, {"Column10", type any}, {"Column11", type any}, {"Column12", type any}}),
+				    #"Removed Top Rows" = Table.Skip(#"Changed Type",4),
+				    #"Promoted Headers1" = Table.PromoteHeaders(#"Removed Top Rows", [PromoteAllScalars=true]),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Promoted Headers1",{{"Week Ending Date", type date}, {" Claims Paid", Int64.Type}, {"Change from Previous Week Ending Date", type any}, {"Percentage Change from Previous Week Ending Date", type any}, {"Paid w/in 1 Week", Int64.Type}, {"Paid w/in 1 Week Percentage", type number}, {"Paid w/in 2 Weeks ", Int64.Type}, {"Paid w/in 2 Weeks Percentage", type number}, {"Paid w/in 3 Weeks", Int64.Type}, {"Paid w/in 3 Weeks Percentage", type number}, {"Paid w/in +3 Weeks", Int64.Type}, {"Paid w/in +3 Weeks Percentage", type number}}),
+				    #"Changed Type2" = Table.TransformColumnTypes(#"Changed Type1",{{"Percentage Change from Previous Week Ending Date", type number}, {"Change from Previous Week Ending Date", Int64.Type}}),
+				    #"Replaced Errors" = Table.ReplaceErrorValues(#"Changed Type2", {{"Change from Previous Week Ending Date", 0}}),
+				    #"Replaced Errors1" = Table.ReplaceErrorValues(#"Replaced Errors", {{"Percentage Change from Previous Week Ending Date", 0}})
+				in
+				    #"Replaced Errors1"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

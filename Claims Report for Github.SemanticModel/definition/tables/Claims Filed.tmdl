@@ -1,0 +1,183 @@
+table 'Claims Filed'
+	lineageTag: 16a2bf57-b896-4bc5-934d-b4e27dd8c4c0
+
+	column 'Week Ending Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 5cbc42ad-0ce9-4d43-974e-85362f8cc7a7
+		summarizeBy: none
+		sourceColumn: Week Ending Date
+
+		variation Variation
+			isDefault
+			relationship: 829dee65-b3e0-47a5-a90c-0b364a3553c9
+			defaultHierarchy: LocalDateTable_f58f8d3f-17a2-456b-9a0d-73baa8be7a4c.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Regular New Claims'
+		dataType: double
+		lineageTag: 58c033a1-1be1-4a25-a439-febe784f691e
+		summarizeBy: sum
+		sourceColumn: Regular New Claims
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Regular Reopened Claims'
+		dataType: double
+		lineageTag: 4635fd2a-3fa0-406d-8c99-bae038e4c5f8
+		summarizeBy: sum
+		sourceColumn: Regular Reopened Claims
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Total Regular '
+		dataType: double
+		lineageTag: 558c67e2-37af-4b7f-a8aa-d4d7fcf86de1
+		summarizeBy: sum
+		sourceColumn: "Total Regular "
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'PUA New Claims'
+		dataType: int64
+		formatString: 0
+		lineageTag: 1339f440-57d4-4f6b-b516-bbe836213370
+		summarizeBy: sum
+		sourceColumn: PUA New Claims
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Change from Previous Week Ending Date'
+		dataType: int64
+		formatString: 0
+		lineageTag: 8a28cb38-49d2-487c-a426-792afef2ff38
+		summarizeBy: sum
+		sourceColumn: Change from Previous Week Ending Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'PUA Reopened Claims'
+		dataType: int64
+		formatString: 0
+		lineageTag: 6ac64a9f-333c-47bc-816c-4130ad8f2cf6
+		summarizeBy: sum
+		sourceColumn: PUA Reopened Claims
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Total PUA'
+		dataType: int64
+		formatString: 0
+		lineageTag: 78d16f97-3fb6-41dc-a10e-abac24499998
+		summarizeBy: sum
+		sourceColumn: Total PUA
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'PEUC New Claims'
+		dataType: int64
+		formatString: 0
+		lineageTag: a637ec48-78ea-4092-b7c1-1a800304c8e9
+		summarizeBy: sum
+		sourceColumn: PEUC New Claims
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'PEUC Reopened Claims'
+		dataType: int64
+		formatString: 0
+		lineageTag: 5addb151-493f-43a3-a65c-6730d30bf1d4
+		summarizeBy: sum
+		sourceColumn: PEUC Reopened Claims
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Total PEUC'
+		dataType: int64
+		formatString: 0
+		lineageTag: 94b4ddeb-272b-445d-ba62-92ba464a30b6
+		summarizeBy: sum
+		sourceColumn: Total PEUC
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'FEDED New Claims'
+		dataType: int64
+		formatString: 0
+		lineageTag: 6aab188e-2428-4535-80a3-e127001dd588
+		summarizeBy: sum
+		sourceColumn: FEDED New Claims
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'FEDED Reopened Claims'
+		dataType: double
+		lineageTag: a26c593b-8fb0-4689-b1e8-2991d2d97fa8
+		summarizeBy: sum
+		sourceColumn: FEDED Reopened Claims
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Total FEDED'
+		dataType: double
+		lineageTag: bd5724de-4f64-4c9b-b0f9-915e7fe6949a
+		summarizeBy: sum
+		sourceColumn: Total FEDED
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Claims Filed'
+		dataType: double
+		lineageTag: 1635df94-a792-4d7e-ad50-272a1104ce54
+		summarizeBy: sum
+		sourceColumn: Claims Filed
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Percentage Change from Previous Week Ending Date'
+		dataType: double
+		lineageTag: 1269b1f0-c308-4041-819a-d49d79a8287e
+		summarizeBy: sum
+		sourceColumn: Percentage Change from Previous Week Ending Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'Claims Filed' = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Michael\unemployment-insurance-claims-data.xlsx"), null, true),
+				    #" Claims Filed_Sheet" = Source{[Item=" Claims Filed",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(#" Claims Filed_Sheet", [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"CALIFORNIA UNEMPLOYMENT INSURANCE (UI) CLAIMS DATA DASHBOARD ", type any}, {"Column2", type any}, {"Column3", type any}, {"Column4", type any}, {"Column5", type any}, {"Column6", type any}, {"Column7", type any}, {"Column8", type any}, {"Column9", type any}, {"Column10", type any}, {"Column11", type any}, {"Column12", type any}, {"Column13", type any}, {"Column14", type any}, {"Column15", type any}, {"Column16", type any}}),
+				    #"Removed Top Rows" = Table.Skip(#"Changed Type",4),
+				    #"Promoted Headers1" = Table.PromoteHeaders(#"Removed Top Rows", [PromoteAllScalars=true]),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Promoted Headers1",{{"Week Ending Date", type date}, {"Regular New Claims", type number}, {"Regular Reopened Claims", type number}, {"Total Regular ", type number}, {"PUA New Claims", Int64.Type}, {"PUA Reopened Claims", Int64.Type}, {"Total PUA", Int64.Type}, {"PEUC New Claims", Int64.Type}, {"PEUC Reopened Claims", Int64.Type}, {"Total PEUC", Int64.Type}, {"FEDED New Claims", Int64.Type}, {"FEDED Reopened Claims", type number}, {"Total FEDED", type number}, {"Claims Filed", type number}, {"Change from Previous Week Ending Date", type any}, {"Percentage Change from Previous Week Ending Date", type any}}),
+				    #"Reordered Columns" = Table.ReorderColumns(#"Changed Type1",{"Week Ending Date", "Regular New Claims", "Regular Reopened Claims", "Total Regular ", "PUA New Claims", "Change from Previous Week Ending Date", "PUA Reopened Claims", "Total PUA", "PEUC New Claims", "PEUC Reopened Claims", "Total PEUC", "FEDED New Claims", "FEDED Reopened Claims", "Total FEDED", "Claims Filed", "Percentage Change from Previous Week Ending Date"}),
+				    #"Changed Type2" = Table.TransformColumnTypes(#"Reordered Columns",{{"Change from Previous Week Ending Date", Int64.Type}, {"Percentage Change from Previous Week Ending Date", type number}}),
+				    #"Replaced Errors" = Table.ReplaceErrorValues(#"Changed Type2", {{"Change from Previous Week Ending Date", 0}}),
+				    #"Replaced Errors1" = Table.ReplaceErrorValues(#"Replaced Errors", {{"Percentage Change from Previous Week Ending Date", 0}})
+				in
+				    #"Replaced Errors1"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

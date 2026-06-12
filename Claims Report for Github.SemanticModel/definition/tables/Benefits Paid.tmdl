@@ -1,0 +1,103 @@
+table 'Benefits Paid'
+	lineageTag: a5036206-02f3-4436-ae4e-ff7337a1142d
+
+	column 'Week Ending Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 324666e0-4e2a-4091-803d-3ef3cc87eb08
+		summarizeBy: none
+		sourceColumn: Week Ending Date
+
+		variation Variation
+			isDefault
+			relationship: ecacfddb-96ee-491b-b384-ecc9a4e343fc
+			defaultHierarchy: LocalDateTable_fc292548-6995-4a19-aa2a-577f589fa4d3.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Regular
+		dataType: double
+		lineageTag: 9fa68255-3a33-4e5e-9f6e-4d80bd085936
+		summarizeBy: sum
+		sourceColumn: Regular
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PUA
+		dataType: double
+		lineageTag: 9ca63ba4-8882-4d75-94b5-dd5e757dc64f
+		summarizeBy: sum
+		sourceColumn: PUA
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PEUC
+		dataType: double
+		lineageTag: 6625a9a0-067c-4dae-875b-7030e9c1fdd1
+		summarizeBy: sum
+		sourceColumn: PEUC
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'FED ED'
+		dataType: double
+		lineageTag: d0a91447-29eb-4687-a5e3-5ee06e957d80
+		summarizeBy: sum
+		sourceColumn: FED ED
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ' Benefits Paid'
+		dataType: double
+		lineageTag: 3181d7de-759c-404c-a33c-bed8ba12fae6
+		summarizeBy: sum
+		sourceColumn: " Benefits Paid"
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Change from Previous Week Ending Date'
+		dataType: string
+		lineageTag: 64fffb53-9a16-44d8-85b7-3e14d968dd55
+		summarizeBy: none
+		sourceColumn: Change from Previous Week Ending Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Percentage Change from Previous Week Ending Date'
+		dataType: string
+		lineageTag: 959f0e2c-f803-4a3d-b176-1a9d398e4c6b
+		summarizeBy: none
+		sourceColumn: Percentage Change from Previous Week Ending Date
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Benefits Paid' = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Michael\unemployment-insurance-claims-data.xlsx"), null, true),
+				    #"Benefits Paid_Sheet" = Source{[Item="Benefits Paid",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Benefits Paid_Sheet", [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"CALIFORNIA UNEMPLOYMENT INSURANCE (UI) CLAIMS DATA DASHBOARD ", type any}, {"Column2", type any}, {"Column3", type any}, {"Column4", type any}, {"Column5", type any}, {"Column6", type any}, {"Column7", type any}, {"Column8", type any}}),
+				    #"Removed Top Rows" = Table.Skip(#"Changed Type",4),
+				    #"Promoted Headers1" = Table.PromoteHeaders(#"Removed Top Rows", [PromoteAllScalars=true]),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Promoted Headers1",{{"Week Ending Date", type date}, {"Regular", type number}, {"PUA", type number}, {"PEUC", type number}, {"FED ED", type number}, {" Benefits Paid", type number}, {"Change from Previous Week Ending Date", type any}, {"Percentage Change from Previous Week Ending Date", type any}})
+				in
+				    #"Changed Type1"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

@@ -1,0 +1,98 @@
+table 'By Line By Group Name'
+	isHidden
+	lineageTag: c2d02ea3-0ddb-439b-8345-99ef5e220cdf
+
+	column Group
+		dataType: string
+		isHidden
+		lineageTag: b3a1f540-cc35-4910-b622-6aa0960ea7f4
+		summarizeBy: none
+		sourceColumn: Group
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Written Premium'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 5f5d7340-dbbe-4776-8df9-8a5af1989ffc
+		summarizeBy: sum
+		sourceColumn: Written Premium
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Market Share'
+		dataType: double
+		isHidden
+		lineageTag: ed0a5e04-a0e0-4fa5-aac2-b125a4d5ea7b
+		summarizeBy: sum
+		sourceColumn: Market Share
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Earned Premium'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 8e32b88c-ef66-4da0-a3a8-15cc0dd94269
+		summarizeBy: sum
+		sourceColumn: Earned Premium
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Incurred Loss'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: d931565b-5a4e-4f2c-b826-736ab3e58b81
+		summarizeBy: sum
+		sourceColumn: Incurred Loss
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Loss Ratio'
+		dataType: double
+		isHidden
+		lineageTag: a0b02af0-a128-45ca-90e8-f308e40486b2
+		summarizeBy: sum
+		sourceColumn: Loss Ratio
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'By Line By Group Name' = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Michael\CDI-MktShrDataPC2024RevJun102025.xlsx"), null, true),
+				    #"By Line By Group Name_Sheet" = Source{[Item="By Line By Group Name",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(#"By Line By Group Name_Sheet", [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"2024 CA Property & Casualty Market Share", type text}, {"Column2", type any}, {"Column3", type any}, {"Column4", type any}, {"Column5", type any}, {"Column6", type any}, {"Instructions: Use slicer to select line of business", type any}}),
+				    #"Removed Top Rows" = Table.Skip(#"Changed Type",4),
+				    #"Promoted Headers1" = Table.PromoteHeaders(#"Removed Top Rows", [PromoteAllScalars=true]),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Promoted Headers1",{{"Group", type text}, {"Written Premium", Int64.Type}, {"Market Share", type number}, {"Earned Premium", Int64.Type}, {"Incurred Loss", Int64.Type}, {"Loss Ratio", type number}, {"Column7", type any}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type1",{"Column7"})
+				in
+				    #"Removed Columns"
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

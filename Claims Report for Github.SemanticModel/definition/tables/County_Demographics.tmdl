@@ -1,0 +1,127 @@
+table County_Demographics
+	lineageTag: 50c9cb98-94fd-4658-81f6-d5ed1215dd8a
+
+	column 'Week Ending'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: e94dba89-104e-4f76-a96b-abac2741391a
+		summarizeBy: none
+		sourceColumn: Week Ending
+
+		variation Variation
+			isDefault
+			relationship: c3d0449f-21f8-4398-a92e-3b33476bfb44
+			defaultHierarchy: LocalDateTable_c340bee9-9392-4c44-abae-9ebb40c4896f.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Group
+		dataType: string
+		lineageTag: 5ba51e98-83a6-49b5-8bf3-fbf7c149f11a
+		summarizeBy: none
+		sourceColumn: Group
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category
+		dataType: string
+		lineageTag: bb7a65cd-3bdb-4d2e-8fc7-8cc768a8b138
+		summarizeBy: none
+		sourceColumn: Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column County
+		dataType: string
+		lineageTag: 1e0ded47-0fed-4db6-91b6-3f52e0b42849
+		summarizeBy: none
+		sourceColumn: County
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Initial UI Claims'
+		dataType: int64
+		formatString: #,0
+		lineageTag: 3e3288e2-4890-4565-9920-4aa500d58088
+		summarizeBy: sum
+		sourceColumn: Initial UI Claims
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: e0bd7281-da64-422c-8c48-ba7016d44fb7
+		summarizeBy: sum
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column gender
+		dataType: string
+		lineageTag: bd639601-0634-4c3d-ae79-dc575b2c8d19
+		summarizeBy: none
+		sourceColumn: gender
+
+		annotation SummarizationSetBy = Automatic
+
+	column Education
+		dataType: string
+		lineageTag: 72c49c07-996c-484a-8d9a-8b24573dc8d2
+		summarizeBy: none
+		sourceColumn: Education
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Age Group'
+		dataType: string
+		lineageTag: cdeacea6-82b4-455e-bb35-8dd52bc0c3dc
+		summarizeBy: none
+		sourceColumn: Age Group
+
+		annotation SummarizationSetBy = Automatic
+
+	column Race
+		dataType: string
+		lineageTag: c5f8d142-ae5f-4901-b99a-0623e4ca71d5
+		summarizeBy: none
+		sourceColumn: Race
+
+		annotation SummarizationSetBy = Automatic
+
+	partition County_Demographics = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Michael\ada-county-and-statewide-demographics--industry-data-7-26-25.xlsx"), null, true),
+				    County_Demographics_Sheet = Source{[Item="County_Demographics",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(County_Demographics_Sheet, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"California Unemployment Industry & Demographics Data Dashboard - County Demographics", type any}, {"Column2", type text}, {"Column3", type text}, {"Column4", type text}, {"Column5", type any}, {"Column6", type any}, {"Column7", type any}}),
+				    #"Removed Top Rows" = Table.Skip(#"Changed Type",2),
+				    #"Promoted Headers1" = Table.PromoteHeaders(#"Removed Top Rows", [PromoteAllScalars=true]),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Promoted Headers1",{{"Week Ending", type date}, {"Group", type text}, {"Category", type text}, {"County", type text}, {"Initial UI Claims", type any}, {"Column6", type any}, {"Column7", type any}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type1",{"Column6", "Column7"}),
+				    #"Changed Type2" = Table.TransformColumnTypes(#"Removed Columns",{{"Initial UI Claims", Int64.Type}}),
+				    #"Duplicated Column" = Table.DuplicateColumn(#"Changed Type2", "Week Ending", "Week Ending - Copy"),
+				    #"Extracted Year" = Table.TransformColumns(#"Duplicated Column",{{"Week Ending - Copy", Date.Year, Int64.Type}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Extracted Year",{{"Week Ending - Copy", "Year"}}),
+				    #"Added Conditional Column" = Table.AddColumn(#"Renamed Columns", "gender", each if [Group] = "Gender" then [Category] else "N/A"),
+				    #"Changed Type3" = Table.TransformColumnTypes(#"Added Conditional Column",{{"gender", type text}}),
+				    #"Replaced Value" = Table.ReplaceValue(#"Changed Type3","Some College or vocational","Vocational College",Replacer.ReplaceText,{"Category"}),
+				    #"Replaced Errors" = Table.ReplaceErrorValues(#"Replaced Value", {{"Initial UI Claims", 0}}),
+				    #"Added Conditional Column1" = Table.AddColumn(#"Replaced Errors", "Education", each if [Group] = "Education" then [Category] else "N/A"),
+				    #"Changed Type4" = Table.TransformColumnTypes(#"Added Conditional Column1",{{"Education", type text}}),
+				    #"Added Conditional Column2" = Table.AddColumn(#"Changed Type4", "Age Group", each if [Group] = "Age Group" then [Category] else "N/A"),
+				    #"Changed Type5" = Table.TransformColumnTypes(#"Added Conditional Column2",{{"Age Group", type text}}),
+				    #"Added Conditional Column3" = Table.AddColumn(#"Changed Type5", "Race", each if [Group] = "Race" then [Category] else "N/A"),
+				    #"Changed Type6" = Table.TransformColumnTypes(#"Added Conditional Column3",{{"Race", type text}}),
+				    #"Replaced Value1" = Table.ReplaceValue(#"Changed Type6","Native American/Alaskan","Native American /Alaskan",Replacer.ReplaceText,{"Race"})
+				in
+				    #"Replaced Value1"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+
