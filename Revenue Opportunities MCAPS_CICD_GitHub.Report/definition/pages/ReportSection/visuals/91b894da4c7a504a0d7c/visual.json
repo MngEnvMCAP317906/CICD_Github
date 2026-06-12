@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
   "name": "91b894da4c7a504a0d7c",
   "position": {
     "x": 799.97658270047,
@@ -168,21 +168,21 @@
             "zoom": {
               "expr": {
                 "Literal": {
-                  "Value": "2.13D"
+                  "Value": "-0.89D"
                 }
               }
             },
             "centerLatitude": {
               "expr": {
                 "Literal": {
-                  "Value": "38.00994099028935D"
+                  "Value": "2.842170943040401e-14D"
                 }
               }
             },
             "centerLongitude": {
               "expr": {
                 "Literal": {
-                  "Value": "-95.81630999999999D"
+                  "Value": "0D"
                 }
               }
             }

@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
   "name": "06b47d18178910d12b0c",
   "position": {
-    "x": 9.4878706199460918,
-    "y": 81.078167115902957,
+    "x": 9.7170462387853682,
+    "y": 81.269841269841265,
     "z": 0,
-    "height": 377.7897574123989,
-    "width": 558.05929919137463,
+    "height": 377.19806763285021,
+    "width": 435.50034506556244,
     "tabOrder": 0
   },
   "visual": {
@@ -42,6 +42,20 @@
               },
               "queryRef": "Sales.Total Revenue",
               "nativeQueryRef": "Total Revenue"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Sales"
+                    }
+                  },
+                  "Property": "Average Revenue"
+                }
+              },
+              "queryRef": "Sales.Average Revenue",
+              "nativeQueryRef": "Average Revenue"
             }
           ]
         }

@@ -1,13 +1,12 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
-  "name": "096ead6a94a9120c910e",
+  "name": "44f37b1a90512085ab31",
   "position": {
-    "x": 666.94271911663213,
-    "y": 90.986887508626637,
-    "z": 1,
-    "height": 119.25465838509317,
-    "width": 220.84195997239473,
-    "tabOrder": 1
+    "x": 931.95307108350585,
+    "y": 75.969634230503786,
+    "z": 2,
+    "height": 134.271911663216,
+    "width": 199.64113181504484
   },
   "visual": {
     "visualType": "cardVisual",
@@ -23,11 +22,12 @@
                       "Entity": "Sales"
                     }
                   },
-                  "Property": "Total Opportunity Count"
+                  "Property": "Total Revenue"
                 }
               },
-              "queryRef": "Sales.Total Opportunity Count",
-              "nativeQueryRef": "Total Opportunity Count"
+              "queryRef": "Sales.Total Revenue",
+              "nativeQueryRef": "Total Revenue",
+              "format": "#,0.00"
             }
           ]
         }
@@ -42,7 +42,7 @@
                     "Entity": "Sales"
                   }
                 },
-                "Property": "Total Opportunity Count"
+                "Property": "Total Revenue"
               }
             },
             "direction": "Descending"
